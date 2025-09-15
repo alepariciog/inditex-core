@@ -21,7 +21,7 @@ public class PriceJpaRepository implements PriceRepository {
     @Override
     public List<Price> findByProductAndBrandAndDatetime(
             Long productId, Long brandId, LocalDateTime datetime) {
-        log.info("Finding prices for the given product, brand and datetime.");
+        log.debug("Finding prices for the given product, brand and datetime.");
         return repositorySpring
                 .findByProductAndBrandAndDatetime(productId, brandId, datetime)
                 .stream()

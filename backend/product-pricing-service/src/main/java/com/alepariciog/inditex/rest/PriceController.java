@@ -26,7 +26,7 @@ public class PriceController {
             @RequestParam("datetime")
             @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME) LocalDateTime datetime
     ) {
-        log.info("Request to retrieve price for a given brandId {}, "
+        log.debug("Request to retrieve price for a given brandId {}, "
                 + "productId {} and datetime {} was received", productId, brandId, datetime);
         Price price = priceService.findPrice(brandId, productId, datetime);
         return priceDtoMapper.map(price);

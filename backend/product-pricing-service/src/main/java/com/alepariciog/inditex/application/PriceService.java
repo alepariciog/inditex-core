@@ -28,7 +28,7 @@ public class PriceService {
             throw new PriceNotFoundException(productId, brandId, datetime);
         }
 
-        log.info("At least one price was found for the given arguments.");
+        log.debug("At least one price was found for the given arguments.");
         return price.stream()
                 .max(Comparator.comparingInt(Price::getPriority))
                 .get();
