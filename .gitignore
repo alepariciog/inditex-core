@@ -1,5 +1,5 @@
 backend/product-pricing-service/target/
-backend/product-pricing-service-e2e/target/
+e2e-tests/product-pricing-service-e2e/target/
 !.mvn/wrapper/maven-wrapper.jar
 !**/src/main/**/target/
 !**/src/test/**/target/
