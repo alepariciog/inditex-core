@@ -11,8 +11,8 @@ import java.util.UUID;
 /**
  * Price entity.
  * Disclaimer: As long as I dont have enough domain knowledge, I just left this
- * entity with no methods nor value objects implemented. This should be a proper domain,
- * but I don't have knowledge to do so right now.
+ * entity with no methods, validations nor value objects implemented.
+ * This should be a proper domain, but I don't have knowledge to do so right now.
  */
 @Getter
 @AllArgsConstructor
@@ -24,7 +24,7 @@ public class Price {
     Long productId;
     Integer priority;
     BigDecimal price;
-    String curr;
+    String currency;
     LocalDateTime startDate;
     LocalDateTime endDate;
 

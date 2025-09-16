@@ -11,7 +11,9 @@ import java.time.LocalDateTime;
 import java.util.Comparator;
 import java.util.List;
 
-/** Service for the find price use case. */
+/**
+ * Service for the find price use case.
+ */
 @Slf4j
 @Named
 @RequiredArgsConstructor

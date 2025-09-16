@@ -9,7 +9,9 @@ import org.springframework.stereotype.Component;
 import java.time.LocalDateTime;
 import java.util.List;
 
-/** Jpa implementation for the price repository. */
+/**
+ * Jpa implementation for the price repository.
+ */
 @Slf4j
 @Component
 @RequiredArgsConstructor

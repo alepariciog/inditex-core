@@ -8,7 +8,7 @@ public record PriceDto(
         Long brandId,
         Long productId,
         BigDecimal price,
-        String curr,
+        String currency,
         LocalDateTime startDate,
         LocalDateTime endDate) {
 

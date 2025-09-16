@@ -2,8 +2,10 @@ package com.alepariciog.inditex;
 
 import io.restassured.RestAssured;
 import io.restassured.http.ContentType;
+import org.apache.http.HttpStatus;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.Arguments;
 import org.junit.jupiter.params.provider.MethodSource;
@@ -31,20 +33,46 @@ public class PricesApiTest {
 
         given()
                 .queryParam("datetime", parameters.datetime())
-                .pathParam("productId", parameters.productId())
-                .pathParam("brandId", parameters.brandId())
+                .queryParam("productId", parameters.productId())
+                .queryParam("brandId", parameters.brandId())
             .when()
-                .get("/api/prices/product/{productId}/brand/{brandId}")
+                .get("/api/prices")
             .then()
-                .statusCode(200)
+                .statusCode(HttpStatus.SC_OK)
                 .contentType(ContentType.JSON)
                 .body("priceList", equalTo((int) response.price_list()))
                 .body("price", equalTo((float) response.price()))
                 .body("brandId", equalTo((int) response.brandId()))
                 .body("productId", equalTo((int) response.productId()))
-                .body("curr", equalTo(response.curr()))
+                .body("currency", equalTo(response.currency()))
                 .body("startDate", equalTo(response.startDate()))
                 .body("endDate", equalTo(response.endDate()));
+    }
+
+    @Test
+    @DisplayName("Verify that retrieves not found code when product does not exist.")
+    void pricesApiShouldReturnNotFoundIfPriceDoesNotExists() {
+        given()
+                .queryParam("datetime", "1990-12-31T23:59:59")
+                .queryParam("productId", 55L)
+                .queryParam("brandId", 55L)
+                .when()
+                .get("/api/prices")
+                .then()
+                .statusCode(HttpStatus.SC_NOT_FOUND);
+    }
+
+    @Test
+    @DisplayName("Verify that retrieves bad request code when using invalid parameters.")
+    void pricesApiShouldReturnBadRequestIfInvalidParameters() {
+        given()
+                .queryParam("datetime", "1990-12-31T23:59:59")
+                .queryParam("productId", "Something")
+                .queryParam("brandId", 55L)
+                .when()
+                .get("/api/prices")
+                .then()
+                .statusCode(HttpStatus.SC_BAD_REQUEST);
     }
 
     private static Stream<Arguments> priceApiTestCases() {
@@ -135,7 +163,7 @@ public class PricesApiTest {
             String startDate,
             String endDate,
             double price,
-            String curr) {
+            String currency) {
 
     }
 }
