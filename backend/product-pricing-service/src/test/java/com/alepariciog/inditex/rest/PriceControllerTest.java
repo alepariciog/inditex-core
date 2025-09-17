@@ -2,6 +2,7 @@ package com.alepariciog.inditex.rest;
 
 import com.alepariciog.inditex.application.PriceService;
 import com.alepariciog.inditex.domain.Price;
+import com.alepariciog.inditex.generated.prices.PriceDto;
 import com.alepariciog.inditex.jpa.PriceJpa;
 import com.alepariciog.inditex.jpa.PriceJpaMapper;
 import com.alepariciog.inditex.jpa.PriceJpaRepository;
@@ -57,17 +58,17 @@ class PriceControllerTest {
         assertThat(retrievedPrice)
                 .as("Retrieved price fields should match found price")
                 .extracting(
-                        PriceDto::productId,
-                        PriceDto::brandId,
-                        PriceDto::price,
-                        PriceDto::priceList,
-                        PriceDto::currency,
-                        PriceDto::startDate,
-                        PriceDto::endDate)
+                        PriceDto::getProductId,
+                        PriceDto::getBrandId,
+                        PriceDto::getPrice,
+                        PriceDto::getPriceList,
+                        PriceDto::getCurrency,
+                        PriceDto::getStartDate,
+                        PriceDto::getEndDate)
                 .containsExactly(
                         foundPrice.getProductId(),
                         foundPrice.getBrandId(),
-                        foundPrice.getPrice(),
+                        foundPrice.getPrice().doubleValue(),
                         foundPrice.getPriceList(),
                         foundPrice.getCurrency(),
                         foundPrice.getStartDate(),

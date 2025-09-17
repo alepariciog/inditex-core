@@ -1,6 +1,7 @@
 package com.alepariciog.inditex.rest;
 
 import com.alepariciog.inditex.domain.Price;
+import com.alepariciog.inditex.generated.prices.PriceDto;
 import org.mapstruct.Mapper;
 import org.mapstruct.MappingConstants;
 

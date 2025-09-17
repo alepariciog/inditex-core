@@ -36,7 +36,7 @@ public class PricesApiTest {
                 .queryParam("productId", parameters.productId())
                 .queryParam("brandId", parameters.brandId())
             .when()
-                .get("/api/prices")
+                .get("/prices")
             .then()
                 .statusCode(HttpStatus.SC_OK)
                 .contentType(ContentType.JSON)
@@ -57,7 +57,7 @@ public class PricesApiTest {
                 .queryParam("productId", 55L)
                 .queryParam("brandId", 55L)
                 .when()
-                .get("/api/prices")
+                .get("/prices")
                 .then()
                 .statusCode(HttpStatus.SC_NOT_FOUND);
     }
@@ -70,7 +70,7 @@ public class PricesApiTest {
                 .queryParam("productId", "Something")
                 .queryParam("brandId", 55L)
                 .when()
-                .get("/api/prices")
+                .get("/prices")
                 .then()
                 .statusCode(HttpStatus.SC_BAD_REQUEST);
     }

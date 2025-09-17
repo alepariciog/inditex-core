@@ -1,0 +1,82 @@
+openapi: 3.0.3
+info:
+  title: Price API
+  version: 1.0.0
+  description: API to query prices by product, brand, and datetime
+
+paths:
+  /prices:
+    get:
+      tags:
+        - Price
+      summary: Queries price by product, brand, and application datetime
+      operationId: get-price
+      parameters:
+        - in: query
+          name: productId
+          schema:
+            type: integer
+            format: int64
+            example: 35455
+          required: true
+          description: Id of the product
+        - in: query
+          name: brandId
+          schema:
+            type: integer
+            format: int64
+            example: 1
+          required: true
+          description: Id of the brand
+        - in: query
+          name: datetime
+          schema:
+            type: string
+            format: date-time
+            example: "2020-06-14T10:00:00"
+          required: true
+          description: Application datetime in ISO 8601 format
+      responses:
+        '200':
+          description: Price found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PriceDto'
+        '404':
+          description: Price not found
+        '400':
+          description: Bad request
+
+components:
+  schemas:
+    PriceDto:
+      type: object
+      properties:
+        productId:
+          type: integer
+          format: int64
+          example: 35455
+        brandId:
+          type: integer
+          format: int64
+          example: 1
+        priceList:
+          type: integer
+          format: int64
+          example: 2
+        startDate:
+          type: string
+          format: date-time
+          example: "2020-06-14T00:00:00"
+        endDate:
+          type: string
+          format: date-time
+          example: "2020-12-31T23:59:59"
+        price:
+          type: number
+          format: double
+          example: 35.5
+        currency:
+          type: string
+          example: "EUR"
