@@ -23,7 +23,6 @@ import java.time.OffsetDateTime;
  */
 @Slf4j
 @RestController
-@RequestMapping("/api/prices")
 @RequiredArgsConstructor
 public class PriceController implements PricesApi {
 
