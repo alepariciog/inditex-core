@@ -134,6 +134,7 @@
                             <apiPackage>com.alepariciog.inditex.generated.prices</apiPackage>
                             <modelPackage>com.alepariciog.inditex.generated.prices</modelPackage>
                             <configOptions>
+                                <interfaceOnly>true</interfaceOnly>
                                 <dateLibrary>java8-localdatetime</dateLibrary>
                                 <nullableReferenceTypes>false</nullableReferenceTypes>
                                 <useJakartaEe>true</useJakartaEe>
