@@ -30,7 +30,6 @@ public class PriceController implements PricesApi {
     private final PriceDtoMapper priceDtoMapper;
 
     @Override
-    @GetMapping
     public PriceDto getPrice(Long productId, Long brandId, LocalDateTime datetime) {
         log.debug("Request to retrieve price for a given brandId {}, "
                 + "productId {} and datetime {} was received", productId, brandId, datetime);
